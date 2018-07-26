@@ -348,7 +348,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4179703586940230, guid: fc0693f89e99947eaa074bae2553e482, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7.5
+      value: 5.22
       objectReference: {fileID: 0}
     - target: {fileID: 4179703586940230, guid: fc0693f89e99947eaa074bae2553e482, type: 2}
       propertyPath: m_LocalPosition.y
@@ -420,6 +420,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4920221993195470, guid: 12e710f2118db42eb915a946f424233b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 7.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272881441319240, guid: 12e710f2118db42eb915a946f424233b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -7.03
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12e710f2118db42eb915a946f424233b, type: 2}
   m_IsPrefabAsset: 0
@@ -471,7 +479,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1024, y: 768}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3

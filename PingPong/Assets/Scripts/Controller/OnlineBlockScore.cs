@@ -1,48 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class OnlineBlockScore : MonoBehaviour {
+public class OnlineBlockScore : NetworkBehaviour {
 
 	#region private
     [SerializeField]
-    private float speed = 8f;
+    private string player = "P1";
 
-    private Transform m_Transform;
-    private Rigidbody m_Rigidbody;
+    [SyncVar(hook = "OnScoreChanged")]
+    private int score = 0;
     #endregion
 	
-	void Start () 
-    {
-		m_Transform = this.transform;
-        m_Rigidbody = m_Transform.GetComponent<Rigidbody>();
-
-        m_Rigidbody.velocity = Vector3.right * speed;
-	}
-
 	private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player") {
-            ChangeDirection(collision);
-        }
-
-        if (collision.gameObject.tag == "Goal") {
-            Debug.Log("Add Score");
-            UIInterface.Instance.UpdateScoreP1();
+        if(collision.gameObject.tag == "Ball")
+        {
+            CmdAddScore();
         }
     }
 
-    private void ChangeDirection(Collision collision)
+    [Command]
+    private void CmdAddScore()
     {
-        float newDirectionY = HitObject(m_Transform.position, collision.transform.position, collision.collider.bounds.size.y);
-        float newDirectionX = (m_Rigidbody.velocity.x >= 0f) ? 1f: -1f;
-
-        Vector3 direction = new Vector3(newDirectionX, newDirectionY, 0f).normalized;
-        m_Rigidbody.velocity = direction * speed;
+        score++;
     }
 
-    private float HitObject(Vector3 ballPosition, Vector3 paddlePosition, float paddleHeight)
+    private void OnScoreChanged(int newScore)
     {
-        return (ballPosition.y - paddlePosition.y) / paddleHeight;
+         OnlineModeManager.Instance.OnDestroyBall();
+         if (player.Equals("P1")) {
+             UIInterface.Instance.UpdateScoreP1(newScore);
+         }
+         else if(player.Equals("P2")) {
+             UIInterface.Instance.UpdateScoreP2(newScore);
+         }
+    }
+
+    public override void OnStartClient()
+    {                
+        UIInterface.Instance.UpdateScoreP1(0);
+        UIInterface.Instance.UpdateScoreP2(0);        
     }
 }

@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4308607532336472}
-  - component: {fileID: 114788835090845626}
   - component: {fileID: 114510069933607782}
   - component: {fileID: 114397388621734808}
   m_Layer: 0
@@ -36,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1250990849876358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,22 +84,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562d6d1e12ac5481aa0ad919dbe57057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isReady: 0
+  isStart: 1
   m_ballPrefab: {fileID: 1531577473373464, guid: b38d6d5896af24d358a502f130ad1455,
     type: 2}
   m_leftWallPrefab: {fileID: 1049045267372256, guid: 4f212aab458914c109753392b6df4da5,
     type: 2}
   m_rightWallPrefab: {fileID: 1091934397607946, guid: 20e27106b7cfe413c8d3fda4b83a26c2,
     type: 2}
---- !u!114 &114788835090845626
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1250990849876358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d5c5032b11ab4b629960e3d8c117b2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  txtScoreRight: {fileID: 0}
-  txtScoreLeft: {fileID: 0}
+  m_item: {fileID: 1696208210060556, guid: 06fff4d57dbfe402bb4b18112b2ac75b, type: 2}
+  timeStart: 3

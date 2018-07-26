@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 [RequireComponent(typeof(Rigidbody))]
-public class OnlinePlayerInpuController : NetworkBehaviour {
+public class OnlinePlayerInpuController : NetworkBehaviour 
+{
 
  	#region private
     [SerializeField]

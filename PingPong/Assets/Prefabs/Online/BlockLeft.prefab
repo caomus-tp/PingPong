@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114993838287863882}
   m_Layer: 0
   m_Name: BlockLeft
-  m_TagString: Goal
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,11 +54,11 @@ MeshRenderer:
   m_GameObject: {fileID: 1049045267372256}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7361ecc4c1fa44409b53c1812c2cbcbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  player: P2
 --- !u!114 &114519978820683136
 MonoBehaviour:
   m_ObjectHideFlags: 1

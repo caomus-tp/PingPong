@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114338929028207766}
   - component: {fileID: 114533506528054656}
   - component: {fileID: 114167940262893824}
+  - component: {fileID: 65298902753068998}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Ball
@@ -54,11 +55,11 @@ MeshRenderer:
   m_GameObject: {fileID: 1531577473373464}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -102,7 +103,19 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 120
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
+--- !u!65 &65298902753068998
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531577473373464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114167940262893824
 MonoBehaviour:
   m_ObjectHideFlags: 1
