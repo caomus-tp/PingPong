@@ -8,9 +8,7 @@ public class ItemEffect : MonoBehaviour
     {
         None = 0,
         Speed,
-        ScaleBall,
-        ScaleBar,
-        Freeze
+        ScaleBall
     }
 
     public EITEM m_itemType = EITEM.None;

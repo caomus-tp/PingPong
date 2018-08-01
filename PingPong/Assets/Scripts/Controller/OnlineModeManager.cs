@@ -64,7 +64,7 @@ public class OnlineModeManager : NetworkBehaviour
         if (item == null)
         {
             item = Instantiate<GameObject>(m_item, new Vector3(Random.Range(-3, 3), Random.Range(-4, 3), -9f), Quaternion.identity);
-            item.GetComponent<ItemEffect>().m_itemType = (ItemEffect.EITEM)Random.Range((int)ItemEffect.EITEM.Speed, (int)ItemEffect.EITEM.Freeze + 1);
+            item.GetComponent<ItemEffect>().m_itemType = (ItemEffect.EITEM)Random.Range((int)ItemEffect.EITEM.Speed, (int)ItemEffect.EITEM.ScaleBall + 1);
             NetworkServer.Spawn(item);
         }
         OnSpawnItem();

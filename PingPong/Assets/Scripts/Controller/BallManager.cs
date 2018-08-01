@@ -184,6 +184,7 @@ public class BallManager : NetworkBehaviour
 
     private void OnScaleChanged(float _scale)
     {
-        m_Transform.localScale = new Vector3(scale, scale, scale);
+        Debug.Log("OnScaleChanged " + _scale);
+        m_Transform.localScale = new Vector3(_scale, _scale, _scale);
     }
 }
