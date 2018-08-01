@@ -20,6 +20,7 @@ public class UIInterface : MonoBehaviour
     public Text txtHP_P2;
     public Button btnPause;
     public GameObject panelLeaderboard;
+    public GameObject panelEndGame;
     #endregion    
 
     private void Awake()
@@ -92,7 +93,25 @@ public class UIInterface : MonoBehaviour
     public void CloseLeaderBoard()
     {
         panelLeaderboard.SetActive(false);
-        GameObject.Find("LobbyManager").GetComponent<LobbyManager>().OnDisconnect();
+        if (OnlineGameManager.Instance.isHost) 
+        {
+            GameObject.Find("LobbyManager").GetComponent<LobbyManager>().OnDisconnectHost();
+        }
+        else
+        {
+            GameObject.Find("LobbyManager").GetComponent<LobbyManager>().OnDisconnect();
+        }
         // UIEventLoader.Instance.OnLoadScene("Lobby");
+    }
+
+    public void ShowEndGame()
+    {
+        panelEndGame.SetActive(true);
+    }
+
+    public void CloseEndGame()
+    {
+        panelEndGame.SetActive(false);
+        GameObject.Find("LobbyManager").GetComponent<LobbyManager>().OnDisconnectHost();
     }
 }

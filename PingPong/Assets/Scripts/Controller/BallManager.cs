@@ -54,7 +54,8 @@ public class BallManager : NetworkBehaviour
 
     private void Update()
     {
-        if (OnlineGameManager.Instance.m_state == OnlineGameManager.STATE.Pause || 
+        if (!OnlineGameManager.Instance.isStart ||            
+            OnlineGameManager.Instance.m_state == OnlineGameManager.STATE.Pause || 
             OnlineGameManager.Instance.m_state == OnlineGameManager.STATE.EndGame)
         {
             m_Rigidbody.isKinematic = true;

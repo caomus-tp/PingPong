@@ -56,8 +56,10 @@ public class SaveLoadJSON : MonoBehaviour {
     private string GetLeaderboardPath()
     {
         string _path = string.Empty;
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR
         _path = "Assets/Resources/Data/LeaderboardJSON.json";
+#elif UNITY_STANDALONE
+        _path = Application.dataPath + "/StreamingAssets/LeaderboardJSON.json";
 #elif UNITY_IOS || UNITY_ANDROID || UNITY_IPHONE
         _path = Application.persistentDataPath + "PingPong_Data/Resources/Data/LeaderboardJSON.json";
 #endif  

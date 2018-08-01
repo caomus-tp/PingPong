@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class SendMsgType
-{	
-    //public static short Score = MsgType.Highest + 1;
+{	    
     public static short GameState = MsgType.Highest + 1;
 };
 
@@ -13,13 +12,6 @@ public class GameStateMessage : MessageBase
 {
 	public string gamestate;    
 }
-
-//public class ScoreMessage : MessageBase
-//{
-//    public string name;
-//    public int score;
-//}
-
 
 public class LobbyManager : NetworkManager 
 {
@@ -31,8 +23,7 @@ public class LobbyManager : NetworkManager
 		if (conn.hostId != -1)
 		{
             m_host = client;
-            conn.RegisterHandler(SendMsgType.GameState, OnGameStateChange);
-            //conn.RegisterHandler(SendMsgType.Score, AddScore);
+            conn.RegisterHandler(SendMsgType.GameState, OnGameStateChange);            
             OnlineGameManager.Instance.isReady = true;
             Debug.Log("OnServerConnect " + conn.connectionId + " : hostId " + conn.hostId);
             Debug.Log("Host name " + System.Environment.MachineName);
@@ -42,11 +33,14 @@ public class LobbyManager : NetworkManager
     public override void OnServerDisconnect(NetworkConnection conn)
     {        
         Debug.Log("OnServerDisconnect");	   
-	    conn.UnregisterHandler(SendMsgType.GameState);
-        //conn.UnregisterHandler(SendMsgType.Score);
+	    conn.UnregisterHandler(SendMsgType.GameState);        
         OnlineGameManager.Instance.isStart  = false;
         OnlineGameManager.Instance.isReady  = false;
-        OnlineGameManager.Instance.isHost   = false;
+        // OnlineGameManager.Instance.isHost   = false;
+        if (OnlineGameManager.Instance.m_state != OnlineGameManager.STATE.EndGame)
+        {
+            UIInterface.Instance.ShowEndGame();
+        }        
     }
 
 	public override void OnClientConnect(NetworkConnection conn)
@@ -54,8 +48,7 @@ public class LobbyManager : NetworkManager
 		if (conn.hostId != -1 )
 		{            
             m_client = client;
-            conn.RegisterHandler(SendMsgType.GameState, OnGameStateChange);
-            //conn.RegisterHandler(SendMsgType.Score, AddScore);
+            conn.RegisterHandler(SendMsgType.GameState, OnGameStateChange);            
             OnlineGameManager.Instance.isReady = true;            
             Debug.Log("OnClientConnect " + conn.connectionId + " : hostId " + conn.hostId);
             Debug.Log("Client name " + System.Environment.MachineName);
@@ -65,10 +58,31 @@ public class LobbyManager : NetworkManager
     public override void OnClientDisconnect(NetworkConnection conn)
     {        
 		Debug.Log("OnClientDisconnect");
-        conn.UnregisterHandler(SendMsgType.GameState);
-        //conn.UnregisterHandler(SendMsgType.Score);
+        conn.UnregisterHandler(SendMsgType.GameState);        
         OnlineGameManager.Instance.isStart = false;
         OnlineGameManager.Instance.isReady = false;
+
+        OnDisconnect();
+    }
+
+    public override void OnServerError(NetworkConnection conn, int errorCode) 
+    {
+        Debug.Log("OnServerError "+ conn.connectionId +":"+conn.address);
+    }
+
+    public override void OnStopHost()
+    {
+        Debug.Log("OnStopHost");
+    }
+
+    public override void OnStopServer()
+    {
+        Debug.Log("OnStopServer");
+    }
+    
+    public override void OnStopClient()
+    {
+        Debug.Log("OnStopClient");
     }
 
     public void ServerSendGameState(GameStateMessage _msg)
@@ -102,9 +116,21 @@ public class LobbyManager : NetworkManager
     public void OnDisconnect() 
     {        
         if (OnlineGameManager.Instance.isHost)
-            NetworkServer.DisconnectAll();
-        else 
-            m_client.Disconnect();
-        
+        {
+            OnDisconnectHost();
+        }        
+        else
+        {
+            Debug.Log("call StopClient");
+            StopClient();            
+            StopAllCoroutines();
+        }
+    }
+
+    public void OnDisconnectHost()
+    {
+        Debug.Log("call StopServer");
+        NetworkManager manager = GetComponent<NetworkManager>();
+        manager.StopHost();
     }
 }
