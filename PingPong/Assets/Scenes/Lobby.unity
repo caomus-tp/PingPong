@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 1142853906}
   - component: {fileID: 1142853905}
   - component: {fileID: 1142853907}
+  - component: {fileID: 1142853908}
   m_Layer: 0
   m_Name: LobbyManager
   m_TagString: Untagged
@@ -392,6 +393,7 @@ MonoBehaviour:
   - {fileID: 1531577473373464, guid: b38d6d5896af24d358a502f130ad1455, type: 2}
   - {fileID: 1049045267372256, guid: 4f212aab458914c109753392b6df4da5, type: 2}
   - {fileID: 1091934397607946, guid: 20e27106b7cfe413c8d3fda4b83a26c2, type: 2}
+  - {fileID: 1696208210060556, guid: 06fff4d57dbfe402bb4b18112b2ac75b, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -475,3 +477,14 @@ MonoBehaviour:
   showGUI: 1
   offsetX: 0
   offsetY: -35
+--- !u!114 &1142853908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1142853904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0197744535343714a8d4ae2f9a46ea0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

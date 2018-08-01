@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 [RequireComponent(typeof(Rigidbody))]
-public class OnlinePlayerInpuController : NetworkBehaviour 
+public class OnlinePlayerInpuController : NetworkBehaviour
 {
 
- 	#region private
+    #region private
     [SerializeField]
     private float speed = 8f;
     [SerializeField]
@@ -16,20 +16,21 @@ public class OnlinePlayerInpuController : NetworkBehaviour
     private Rigidbody m_Rigidbody;
     #endregion
 
-	// Use this for initialization
-	void Start () 
-	{
-		if (!isLocalPlayer) {
+    // Use this for initialization
+    void Start()
+    {
+        if (!isLocalPlayer)
+        {
             Destroy(this);
             return;
         }
 
         m_Rigidbody = this.transform.GetComponent<Rigidbody>();
-	}
-	
-	private void FixedUpdate()
+    }
+
+    private void FixedUpdate()
     {
-        float currentVelocity = Input.GetAxisRaw("Vertical");
+        float currentVelocity = Input.GetAxisRaw(axis);
         m_Rigidbody.velocity = Vector3.up * speed * currentVelocity;
     }
 
